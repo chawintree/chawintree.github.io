@@ -6,6 +6,4 @@ permalink: /about/
 
 # Hi, I'm Chawin
 
-I work as a Senior Software Engineer at [Checkout.com](https://checkout.com)
-
-Currently working in the FinTech industry, I have over 6 years experience in software development and design.
+I work as Engineering Director at [Paytently](https://paytently.com) and have opinions and thoughts on many things

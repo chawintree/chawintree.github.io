@@ -1,7 +1,7 @@
-title: Chawin Tree - Blog
+title: Chawin Tree
 email: hello@chawintree.com
 baseurl: "/"
-url: "https://chawintree.dev"
+url: "https://chawintree.com"
 
 # Build settings
 markdown: kramdown
