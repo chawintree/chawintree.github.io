@@ -2,7 +2,6 @@
 layout: post
 title:  "Reassurance"
 date:   2025-01-14 20:00:00 +0000
-categories: management relationships
 ---
 
 Why do people feel the need to be reassured?  
