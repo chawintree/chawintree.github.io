@@ -23,7 +23,9 @@ Closer relationships, such as romantic partners or long-standing friendships, fo
 
 Inevitably, those close to you will experience worry with greater emotional need - in turn, your reassurance can provide greater relief to these worries due to the trust and bond that has been developed.
 
+
 ---
+
 
 I previously mentioned empthy, which is fundamental to reassuring those around you. Empathy requires you to understand (or at least try) the feelings that someone is experiencing; without this understanding, reassurances given can be hollow. Even worse, reassurances based on misunderstanding can reinforce someone's worries or isolate them, causing more worry.
 
