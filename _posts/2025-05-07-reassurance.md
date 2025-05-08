@@ -14,7 +14,7 @@ With this in mind, I want to explore the act of reassurance and why I believe it
 
 Reassurance in the workplace, especially with one's colleagues, is vital to the continued happiness of those around you. Many people suffer from the doubt of their own skills, or perhaps their behaviour with others in the team. To remind someone of their successes, to reassure, is an honest, simple way in which you can immediately relieve someone's worries. To validate someone's exhaustion after a difficult week, that the next week will be better, can build trust with people through empathy and understanding.
 
-As a manager, the dynamic shifts in the relationship. Many of an individual's problems can be directly, or indirectly, caused by someone they report to. Be it the security of someone's job, the fear of underperformance, whether their colleages like them - the reassurance by someone who has influence over these issues can be far more impactful than that of their peers. However, reassurance without action can exacerbate worry. For someone to be reassured, and to continue feeling their worries validated, will simply breed distrust of the reassurer. 
+As a manager, the dynamic shifts in the relationship. Many of an individual's problems can be directly, or indirectly, caused by someone they report to. Be it the security of someone's job, the fear of underperformance, whether their colleagues like them - the reassurance by someone who has influence over these issues can be far more impactful than that of their peers. However, reassurance without action can exacerbate worry. For someone to be reassured, and for them then to continue feeling their worries validated through experience, will simply breed distrust of the reassurer. 
 
 ---
 
@@ -22,11 +22,9 @@ Closer relationships, such as romantic partners or long-standing friendships, fo
 
 Inevitably, those close to you will experience worry with greater emotional need - in turn, your reassurance can provide greater relief to these worries due to the trust and bond that has been developed.
 
-
 ---
 
-
-I previously mentioned empthy, which is fundamental to reassuring those around you. Empathy requires you to understand (or at least try) the feelings that someone is experiencing; without this understanding, reassurances given can be hollow. Even worse, reassurances based on misunderstanding can reinforce someone's worries or isolate them, causing more worry.
+I previously mentioned empathy, which is fundamental to reassuring those around you. Empathy requires you to understand (or at least try to understand) the feelings that someone is experiencing; without this understanding, reassurances given can be hollow. Even worse, reassurances based on misunderstanding can reinforce someone's worries or isolate them, causing more worry.
 
 ---
 
