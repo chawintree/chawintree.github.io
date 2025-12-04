@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "I think advertising should be banned"
-date:   2025-12-05 09:00:00 +0000
+date:   2025-12-04 09:00:00 +0000
 ---
+
 The title of this might seem like hyperbole, but I can assure you I am serious: I think that advertising should be banned. 
 
 I am also aware that polarizing and extreme views are common clickbait hooks in this day and age, and that if I share these thoughts, the sharing itself could be considered a form of advertising. The irony and hypocrisy are not lost on me. However, I ask that for the next few minutes you listen, with hope that a seed is planted in your mind that may grow over time to perhaps join me on a journey of anti-consumerism.
