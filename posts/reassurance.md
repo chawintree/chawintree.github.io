@@ -1,9 +1,3 @@
----
-layout: post
-title:  "Reassurance"
-date:   2025-05-07 20:00:00 +0000
----
-
 Why do people feel the need to be reassured?  
 
 Reassurance is defined by the [Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/reassurance) as "words of advice and comfort intended to make someone feel less worried". Where worry stems from is another story; its origins can be from doubt, anxiety, fear, anger, insecurity, among a multitude of other feelings. 

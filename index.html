@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chawin Tree</title>
+    <meta name="description" content="A Life in Curated Thought — Essays, books, and games.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Josefin+Sans:wght@600;700&family=Source+Sans+3:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+
+    <aside class="vertical-spine">
+        <span class="vertical-label accent-text">Have a nice day</span>
+    </aside>
+
+    <div class="editorial-container">
+
+        <header class="page-header">
+            <h1 class="title-large">CHAWIN TREE</h1>
+            <p class="subtitle"></p>
+        </header>
+
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="blog.html">Blog</a>
+            <div class="nav-dropdown">
+                <span>More</span>
+                <div class="dropdown-menu">
+                    <a href="library.html">Library</a>
+                    <a href="games.html">Games</a>
+                </div>
+            </div>
+            <a href="about.html">About</a>
+        </nav>
+
+        <main class="content-wrapper">
+
+            <section class="content-main">
+                <div id="recent-posts">
+                    <div class="blog-preview">
+                        <span class="date-text">Loading...</span>
+                        <h3><a href="#">Recent Writing</a></h3>
+                    </div>
+                </div>
+                <a href="blog.html" class="read-more">← View all posts</a>
+            </section>
+
+            <section class="content-aside">
+                
+                <a href="library.html" class="plate-card library-card">
+                    <img src="assets/books_2.png" alt="Books" class="card-image">
+                    <div class="card-details">
+                        <h4>My Library</h4>
+                    </div>
+                </a>
+
+                <a href="games.html" class="plate-card games-card">
+                    <img src="assets/games_2.png" alt="Games" class="card-image">
+                    <div class="card-details">
+                        <h4>My Favourite Games</h4>
+                    </div>
+                </a>
+
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <p>© 2026 Chawin Tree</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Load latest 3 posts for home page
+        fetch('posts/manifest.json')
+            .then(response => response.json())
+            .then(posts => {
+                const container = document.getElementById('recent-posts');
+                const recentPosts = posts.slice(0, 3);
+                
+                if (recentPosts.length > 0) {
+                    container.innerHTML = recentPosts.map(post => {
+                        const date = new Date(post.date);
+                        const dateStr = date.toLocaleDateString('en-GB', { 
+                            day: '2-digit', 
+                            month: 'short',
+                            year: 'numeric'
+                        }).toUpperCase();
+                        
+                        return `
+                            <div class="blog-preview">
+                                <span class="date-text">${dateStr}</span>
+                                <h3><a href="post.html?post=${post.slug}">${post.title}</a></h3>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            })
+            .catch(() => {
+                document.getElementById('recent-posts').innerHTML = `
+                    <div class="blog-preview">
+                        <h3>Welcome</h3>
+                        <p class="body-text">Essays and thoughts coming soon.</p>
+                    </div>
+                `;
+            });
+    </script>
+
+</body>
+</html>

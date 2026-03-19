@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... — Chawin Tree</title>
+    <meta name="description" content="An essay from Chawin Tree.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Josefin+Sans:wght@600;700&family=Source+Sans+3:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <!-- marked.js for markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <aside class="vertical-spine">
+        <span class="vertical-label accent-text">READING</span>
+    </aside>
+
+    <div class="editorial-container">
+
+        <header class="page-header" id="post-header">
+            <h1 class="title-large">CHAWIN TREE</h1>
+            <p class="subtitle" id="post-title">— Loading... —</p>
+        </header>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="blog.html" class="active">Blog</a>
+            <div class="nav-dropdown">
+                <span>More</span>
+                <div class="dropdown-menu">
+                    <a href="library.html">Library</a>
+                    <a href="games.html">Games</a>
+                </div>
+            </div>
+            <a href="about.html">About</a>
+        </nav>
+
+        <main class="content-single">
+            <a href="blog.html" class="back-link">Back to all posts</a>
+            
+            <article class="post-content" id="post-content">
+                <p class="loading">Loading post...</p>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <p>© 2026 Chawin Tree</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Get post slug from URL
+        const params = new URLSearchParams(window.location.search);
+        const slug = params.get('post');
+        
+        if (!slug) {
+            window.location.href = 'blog.html';
+        }
+        
+        // Load post metadata and content
+        Promise.all([
+            fetch('posts/manifest.json').then(r => r.json()),
+            fetch(`posts/${slug}.md`).then(r => r.text())
+        ])
+        .then(([manifest, markdown]) => {
+            // Find post in manifest
+            const post = manifest.find(p => p.slug === slug);
+            
+            if (post) {
+                // Update page title and subtitle
+                document.title = `${post.title} — Chawin Tree`;
+                document.getElementById('post-title').textContent = `— ${post.title} —`;
+                
+                // Format date for content
+                const date = new Date(post.date);
+                const dateStr = date.toLocaleDateString('en-GB', { 
+                    day: '2-digit', 
+                    month: 'short',
+                    year: 'numeric'
+                }).toUpperCase();
+                
+                // Render markdown with date header
+                document.getElementById('post-content').innerHTML = 
+                    `<p class="date-text" style="margin-bottom: 32px;">${dateStr}</p>` +
+                    marked.parse(markdown);
+            } else {
+                document.getElementById('post-content').innerHTML = marked.parse(markdown);
+            }
+        })
+        .catch(error => {
+            console.error('Error loading post:', error);
+            document.getElementById('post-title').textContent = '— Post Not Found —';
+            document.getElementById('post-content').innerHTML = `
+                <p>Sorry, this post could not be found.</p>
+                <p><a href="blog.html">← Return to blog</a></p>
+            `;
+        });
+    </script>
+
+</body>
+</html>

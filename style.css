@@ -1,0 +1,834 @@
+/* ============================================
+   CHAWIN TREE - Hokusai Monograph Aesthetic
+   ============================================ */
+
+/* --- 1. CSS Variables & Reset --- */
+:root {
+    --bg-washi: #F9F3E6;
+    --prussian-blue: #1A3C5E;
+    --indigo-ink: #2E4B61;
+    --indigo-ink-light: rgba(46, 75, 97, 0.6);
+    --earth-ochre: #D4A26A;
+    --benizuri-red: #B84B3E;
+    
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans-accent: 'Josefin Sans', 'Gill Sans', sans-serif;
+    --font-sans-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+    
+    /* Spacing */
+    --spine-width: 60px;
+    --editorial-margin: 100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-washi);
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+    font-family: var(--font-sans-body);
+    color: var(--indigo-ink);
+}
+
+/* Background decoration */
+body::before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: clamp(500px, 45vw, 900px);
+    height: clamp(400px, 40vh, 750px);
+    background-image: url('assets/blooming_plum_tree.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* --- 2. Typography Classes --- */
+
+/* Color utilities */
+.color-prussian { color: var(--prussian-blue); }
+.color-indigo { color: var(--indigo-ink); }
+.color-indigo-light { color: var(--indigo-ink-light); }
+.color-ochre { color: var(--earth-ochre); }
+.color-red { color: var(--benizuri-red); }
+
+/* Serif headings */
+.title-large {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: var(--prussian-blue);
+}
+
+.title-medium {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.2;
+    color: var(--indigo-ink);
+}
+
+.title-small {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--indigo-ink);
+}
+
+.subtitle {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--earth-ochre);
+}
+
+/* Sans accent text (dates, labels) */
+.accent-text {
+    font-family: var(--font-sans-accent);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--indigo-ink);
+}
+
+.date-text {
+    font-family: var(--font-sans-accent);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--benizuri-red);
+}
+
+/* Body text */
+.body-text {
+    font-family: var(--font-sans-body);
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.75;
+    max-width: 65ch;
+    color: var(--indigo-ink);
+}
+
+.body-text-small {
+    font-family: var(--font-sans-body);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--indigo-ink-light);
+}
+
+/* --- 3. The Vertical Spine --- */
+.vertical-spine {
+    width: var(--spine-width);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.vertical-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+/* --- 4. Editorial Container --- */
+.editorial-container {
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: var(--editorial-margin);
+    padding-right: var(--editorial-margin);
+    padding-bottom: 120px;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.page-header {
+    padding-top: 60px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.page-header .subtitle {
+    margin-top: 8px;
+}
+
+/* --- 5. Navigation --- */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px 0;
+    margin-bottom: 40px;
+}
+
+nav a {
+    font-family: var(--font-sans-accent);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--indigo-ink);
+    text-decoration: none;
+    padding: 8px 0;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--earth-ochre);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: var(--prussian-blue);
+}
+
+/* Dropdown */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown > span {
+    font-family: var(--font-sans-accent);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--indigo-ink);
+    cursor: pointer;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-dropdown > span::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--earth-ochre);
+    transition: width 0.3s ease;
+}
+
+.nav-dropdown:hover > span::after {
+    width: 100%;
+}
+
+.nav-dropdown:hover > span {
+    color: var(--prussian-blue);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-washi);
+    border: 0.5px solid var(--earth-ochre);
+    padding: 12px 0;
+    min-width: 120px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 200;
+    margin-top: 8px;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 20px;
+    text-align: center;
+}
+
+.dropdown-menu a::after {
+    display: none;
+}
+
+.nav-dropdown > span.active::after {
+    width: 100%;
+}
+
+/* --- 6. Content Layout --- */
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+.content-main {
+    flex: 2;
+    padding-left: 50px;
+}
+
+.content-aside {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 40px;
+    padding-left: 0;
+}
+
+/* Single column layout for blog/about pages */
+.content-single {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 7. Blog Post List --- */
+.post-list {
+    list-style: none;
+}
+
+.post-item {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(212, 162, 106, 0.3);
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}
+
+.post-item .date-text {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.post-item h2 {
+    margin-bottom: 0;
+}
+
+.post-item h2 a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.post-item h2 a:hover {
+    color: var(--prussian-blue);
+}
+
+/* --- 8. Single Post --- */
+.post-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(212, 162, 106, 0.3);
+}
+
+.post-header .date-text {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.post-header h1 {
+    margin-bottom: 0;
+}
+
+.post-content {
+    font-family: var(--font-sans-body);
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--indigo-ink);
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--prussian-blue);
+    margin-top: 48px;
+    margin-bottom: 16px;
+}
+
+.post-content h2 {
+    font-size: 1.75rem;
+}
+
+.post-content h3 {
+    font-size: 1.35rem;
+}
+
+.post-content p {
+    margin-bottom: 24px;
+}
+
+.post-content a {
+    color: var(--prussian-blue);
+    text-decoration: underline;
+    text-decoration-color: var(--earth-ochre);
+    text-underline-offset: 3px;
+}
+
+.post-content a:hover {
+    color: var(--benizuri-red);
+}
+
+.post-content blockquote {
+    border-left: 3px solid var(--earth-ochre);
+    padding-left: 24px;
+    margin: 32px 0;
+    font-style: italic;
+    color: var(--indigo-ink-light);
+}
+
+.post-content ul,
+.post-content ol {
+    margin-left: 24px;
+    margin-bottom: 24px;
+}
+
+.post-content li {
+    margin-bottom: 8px;
+}
+
+.post-content hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--earth-ochre), transparent);
+    margin: 48px 0;
+}
+
+.post-content code {
+    font-family: 'Consolas', monospace;
+    font-size: 0.9em;
+    background: rgba(46, 75, 97, 0.08);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.post-content pre {
+    background: rgba(46, 75, 97, 0.05);
+    padding: 20px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin-bottom: 24px;
+}
+
+.post-content pre code {
+    background: none;
+    padding: 0;
+}
+
+/* --- 9. Plate Cards (Home page) --- */
+.plate-card {
+    position: relative;
+    width: 200px;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+
+.plate-card:hover {
+}
+
+.plate-card.library-card {
+}
+
+.plate-card.games-card {
+}
+
+/* Study image (decorative frog) */
+.study-image {
+    margin: 0;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    align-self: center;
+}
+
+.study-image:hover {
+    opacity: 1;
+}
+
+.study-image img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+}
+
+.matted-frame {
+    padding: 0;
+    border: 0.5px solid var(--earth-ochre);
+    transition: border-color 0.2s ease;
+    overflow: hidden;
+}
+
+.library-card .matted-frame {
+    border: none;
+    background: none;
+}
+
+.plate-card:hover .matted-frame {
+    border-color: var(--prussian-blue);
+}
+
+.image-placeholder,
+.card-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: linear-gradient(135deg, #E5DCC9 0%, #D8CFC0 100%);
+    font-family: var(--font-sans-accent);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--indigo-ink-light);
+    object-fit: contain;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.plate-card:hover .image-placeholder,
+.plate-card:hover .card-image {
+    opacity: 1;
+}
+
+.image-placeholder {
+    aspect-ratio: 5 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.library-card .card-image,
+.games-card .card-image {
+    background: none;
+}
+
+.card-details {
+    padding-top: 12px;
+    text-align: center;
+}
+
+.hanko-seal {
+    display: none;
+}
+
+.card-details h4 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--indigo-ink);
+    margin-bottom: 4px;
+}
+
+/* --- 10. Blog Preview (Home page) --- */
+.blog-preview-list {
+    list-style: none;
+}
+
+.blog-preview {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(212, 162, 106, 0.25);
+}
+
+.blog-preview:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.blog-preview .date-text {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.blog-preview h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--indigo-ink);
+    margin-bottom: 0;
+}
+
+.blog-preview h3 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-preview h3 a:hover {
+    color: var(--prussian-blue);
+}
+
+/* Read more link */
+.read-more {
+    display: inline-block;
+    font-family: var(--font-sans-accent);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--indigo-ink-light);
+    text-decoration: none;
+    margin-top: 24px;
+}
+
+.read-more:hover {
+    color: var(--prussian-blue);
+}
+
+/* --- 11. About Page --- */
+.about-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about-content p {
+    margin-bottom: 24px;
+}
+
+.about-content a {
+    color: var(--prussian-blue);
+    text-decoration: underline;
+    text-decoration-color: var(--earth-ochre);
+}
+
+/* --- 12. Library & Games Pages --- */
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.collection-item {
+    border: 0.5px solid var(--earth-ochre);
+    padding: 24px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.collection-item:hover {
+    border-color: var(--prussian-blue);
+    transform: translateY(-3px);
+}
+
+.collection-item h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--indigo-ink);
+    margin-bottom: 8px;
+}
+
+.collection-item .meta {
+    font-size: 12px;
+    color: var(--indigo-ink-light);
+    margin-bottom: 12px;
+}
+
+.collection-item p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Numbered list for games */
+.ranked-list {
+    list-style: none;
+    counter-reset: rank;
+}
+
+.ranked-item {
+    counter-increment: rank;
+    display: flex;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(212, 162, 106, 0.2);
+}
+
+.ranked-item::before {
+    content: counter(rank);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--earth-ochre);
+    min-width: 50px;
+}
+
+.ranked-item-content h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--indigo-ink);
+    margin-bottom: 4px;
+}
+
+/* --- 13. Footer --- */
+.site-footer {
+    margin-top: 80px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.site-footer::before {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: rgba(212, 162, 106, 0.4);
+    margin: 0 auto 40px;
+}
+
+.site-footer p {
+    font-size: 12px;
+    color: var(--indigo-ink-light);
+}
+
+/* --- 14. Back Link --- */
+.back-link {
+    display: inline-block;
+    margin-bottom: 40px;
+    font-family: var(--font-sans-accent);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--indigo-ink-light);
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--prussian-blue);
+}
+
+.back-link::before {
+    content: '← ';
+}
+
+/* --- 15. Loading State --- */
+.loading {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--indigo-ink-light);
+    font-style: italic;
+}
+
+/* --- 16. Responsive Design --- */
+@media screen and (max-width: 1024px) {
+    :root {
+        --editorial-margin: 60px;
+    }
+    
+    .content-wrapper {
+        flex-direction: column;
+        gap: 60px;
+    }
+    
+    .content-main {
+        padding-left: 0;
+    }
+    
+    .content-aside {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-left: 0;
+        gap: 40px;
+    }
+    
+    .plate-card {
+        align-self: center !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --spine-width: 40px;
+        --editorial-margin: 20px;
+    }
+    
+    .vertical-spine {
+        width: var(--spine-width);
+    }
+    
+    .editorial-container {
+        margin-left: calc(var(--spine-width) + 20px);
+        padding-right: 20px;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        gap: 20px 30px;
+    }
+    
+    .page-header {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    
+    .title-large {
+        font-size: 2rem;
+    }
+    
+    .post-content {
+        font-size: 16px;
+    }
+    
+    .collection-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body::before {
+        display: none;
+    }
+    
+    .vertical-spine {
+        display: none;
+    }
+    
+    .editorial-container {
+        margin-left: 20px;
+    }
+    
+    nav {
+        gap: 15px 20px;
+    }
+    
+    nav a {
+        font-size: 10px;
+    }
+}
