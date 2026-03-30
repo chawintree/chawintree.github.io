@@ -696,6 +696,42 @@ nav a:hover {
     margin-bottom: 4px;
 }
 
+/* --- 12b. Games Grid --- */
+.games-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+}
+
+.game-card {
+    display: block;
+    width: calc((100% - 5 * 24px) / 6);
+    aspect-ratio: 2 / 3;
+    border: 1px solid var(--earth-ochre);
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.game-card:hover {
+    border-color: var(--prussian-blue);
+    transform: translateY(-3px);
+}
+
+.game-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+.game-card:hover img {
+    opacity: 1;
+}
+
 /* --- 13. Footer --- */
 .site-footer {
     margin-top: 80px;
@@ -750,6 +786,10 @@ nav a:hover {
     :root {
         --editorial-margin: 60px;
     }
+
+    .game-card {
+        width: calc((100% - 3 * 24px) / 4);
+    }
     
     .content-wrapper {
         flex-direction: column;
@@ -777,6 +817,14 @@ nav a:hover {
     :root {
         --spine-width: 40px;
         --editorial-margin: 20px;
+    }
+
+    .games-grid {
+        gap: 16px;
+    }
+
+    .game-card {
+        width: calc((100% - 2 * 16px) / 3);
     }
     
     .vertical-spine {
@@ -812,6 +860,14 @@ nav a:hover {
 }
 
 @media screen and (max-width: 480px) {
+    .games-grid {
+        gap: 12px;
+    }
+
+    .game-card {
+        width: calc((100% - 12px) / 2);
+    }
+
     body::before {
         display: none;
     }
