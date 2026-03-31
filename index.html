@@ -25,16 +25,16 @@
         </header>
 
         <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="blog.html">Blog</a>
+            <a href="/" class="active">Home</a>
+            <a href="/blog">Blog</a>
             <div class="nav-dropdown">
                 <span>More</span>
                 <div class="dropdown-menu">
-                    <a href="library.html">Library</a>
-                    <a href="games.html">Games</a>
+                    <a href="/library">Library</a>
+                    <a href="/games">Games</a>
                 </div>
             </div>
-            <a href="about.html">About</a>
+            <a href="/about">About</a>
         </nav>
 
         <main class="content-wrapper">
@@ -46,19 +46,19 @@
                         <h3><a href="#">Recent Writing</a></h3>
                     </div>
                 </div>
-                <a href="blog.html" class="read-more">← View all posts</a>
+                <a href="/blog" class="read-more">← View all posts</a>
             </section>
 
             <section class="content-aside" style="flex-direction: column; justify-content: center; align-items: flex-end;">
 
                 <div class="aside-link">
                     <span class="accent-text">Collection</span>
-                    <a href="games.html" class="title-medium" style="text-decoration: none;">My Favourite Games</a>
+                    <a href="/games" class="title-medium" style="text-decoration: none;">My Favourite Games</a>
                 </div>
 
                 <div class="aside-link">
                     <span class="accent-text">Collection</span>
-                    <a href="library.html" class="title-medium" style="text-decoration: none;">My Library</a>
+                    <a href="/library" class="title-medium" style="text-decoration: none;">My Library</a>
                 </div>
 
             </section>
@@ -91,7 +91,7 @@
                         return `
                             <div class="blog-preview">
                                 <span class="date-text">${dateStr}</span>
-                                <h3><a href="post.html?post=${post.slug}">${post.title}</a></h3>
+                                <h3><a href="/post?post=${post.slug}">${post.title}</a></h3>
                             </div>
                         `;
                     }).join('');

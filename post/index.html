@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Josefin+Sans:wght@600;700&family=Source+Sans+3:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
     <!-- marked.js for markdown rendering -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
@@ -27,20 +27,20 @@
         </header>
 
         <nav>
-            <a href="index.html">Home</a>
-            <a href="blog.html" class="active">Blog</a>
+            <a href="/">Home</a>
+            <a href="/blog" class="active">Blog</a>
             <div class="nav-dropdown">
                 <span>More</span>
                 <div class="dropdown-menu">
-                    <a href="library.html">Library</a>
-                    <a href="games.html">Games</a>
+                    <a href="/library">Library</a>
+                    <a href="/games">Games</a>
                 </div>
             </div>
-            <a href="about.html">About</a>
+            <a href="/about">About</a>
         </nav>
 
         <main class="content-single">
-            <a href="blog.html" class="back-link">Back to all posts</a>
+            <a href="/blog" class="back-link">Back to all posts</a>
             
             <article class="post-content" id="post-content">
                 <p class="loading">Loading post...</p>
@@ -59,13 +59,13 @@
         const slug = params.get('post');
         
         if (!slug) {
-            window.location.href = 'blog.html';
+            window.location.href = '/blog';
         }
         
         // Load post metadata and content
         Promise.all([
-            fetch('posts/manifest.json').then(r => r.json()),
-            fetch(`posts/${slug}.md`).then(r => r.text())
+            fetch('/posts/manifest.json').then(r => r.json()),
+            fetch(`/posts/${slug}.md`).then(r => r.text())
         ])
         .then(([manifest, markdown]) => {
             // Find post in manifest
@@ -97,7 +97,7 @@
             document.getElementById('post-title').textContent = '— Post Not Found —';
             document.getElementById('post-content').innerHTML = `
                 <p>Sorry, this post could not be found.</p>
-                <p><a href="blog.html">← Return to blog</a></p>
+                <p><a href="/blog">← Return to blog</a></p>
             `;
         });
     </script>

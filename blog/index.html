@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Josefin+Sans:wght@600;700&family=Source+Sans+3:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
 </head>
 <body>
 
@@ -25,16 +25,16 @@
         </header>
 
         <nav>
-            <a href="index.html">Home</a>
-            <a href="blog.html" class="active">Blog</a>
+            <a href="/">Home</a>
+            <a href="/blog" class="active">Blog</a>
             <div class="nav-dropdown">
                 <span>More</span>
                 <div class="dropdown-menu">
-                    <a href="library.html">Library</a>
-                    <a href="games.html">Games</a>
+                    <a href="/library">Library</a>
+                    <a href="/games">Games</a>
                 </div>
             </div>
-            <a href="about.html">About</a>
+            <a href="/about">About</a>
         </nav>
 
         <main class="content-single">
@@ -50,7 +50,7 @@
     </div>
 
     <script>
-        fetch('posts/manifest.json')
+        fetch('/posts/manifest.json')
             .then(response => response.json())
             .then(posts => {
                 const container = document.getElementById('post-list');
@@ -71,7 +71,7 @@
                     return `
                         <li class="post-item">
                             <span class="date-text">${dateStr}</span>
-                            <h2 class="title-medium"><a href="post.html?post=${post.slug}">${post.title}</a></h2>
+                            <h2 class="title-medium"><a href="/post?post=${post.slug}">${post.title}</a></h2>
                         </li>
                     `;
                 }).join('');
