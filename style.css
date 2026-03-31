@@ -127,6 +127,17 @@ body::before {
     color: var(--indigo-ink);
 }
 
+.body-text a {
+    color: var(--indigo-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--earth-ochre);
+    text-underline-offset: 3px;
+}
+
+.body-text a:hover {
+    color: var(--prussian-blue);
+}
+
 .body-text-small {
     font-family: var(--font-sans-body);
     font-weight: 300;
@@ -527,6 +538,30 @@ nav a:hover {
     opacity: 1;
 }
 
+/* Aside links (home page) */
+.aside-link {
+    text-align: right;
+    margin-bottom: 40px;
+}
+
+.aside-link:last-child {
+    margin-bottom: 0;
+}
+
+.aside-link .accent-text {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--earth-ochre);
+}
+
+.aside-link a {
+    transition: color 0.2s ease;
+}
+
+.aside-link a:hover {
+    color: var(--prussian-blue);
+}
+
 .image-placeholder {
     aspect-ratio: 5 / 4;
     display: flex;
@@ -629,6 +664,39 @@ nav a:hover {
 }
 
 /* --- 12. Library & Games Pages --- */
+.library-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--earth-ochre), transparent);
+    margin-bottom: 40px;
+}
+
+.library-columns {
+    display: flex;
+    gap: 40px;
+}
+
+.library-col {
+    flex: 1;
+}
+
+.book-list {
+    list-style: none;
+    margin-bottom: 28px;
+}
+
+.book-list:last-child {
+    margin-bottom: 0;
+}
+
+.book-list li {
+    font-family: var(--font-sans-body);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--indigo-ink);
+}
+
 .collection-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -807,6 +875,17 @@ nav a:hover {
         padding-left: 0;
         gap: 40px;
     }
+
+    .content-aside:has(.aside-link) {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 30px;
+    }
+
+    .content-aside:has(.aside-link) .aside-link {
+        text-align: left;
+        margin-bottom: 0;
+    }
     
     .plate-card {
         align-self: center !important;
@@ -856,6 +935,10 @@ nav a:hover {
     
     .collection-grid {
         grid-template-columns: 1fr;
+    }
+
+    .library-columns {
+        flex-direction: column;
     }
 }
 
